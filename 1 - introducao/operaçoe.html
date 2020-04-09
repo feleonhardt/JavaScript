@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Operações</title>
+    <script>
+        function soma() {
+            var v1 = parseFloat(document.getElementById("s1").value);
+            var v2 = parseFloat(document.getElementById("s2").value);
+            document.getElementById("res_soma").innerHTML = "Resposta: "+(v1+v2)+"<br>"+verifica(v1,v2);
+        }
+        function subtracao() {
+            var v1 = parseFloat(document.getElementById("sub1").value);
+            var v2 = parseFloat(document.getElementById("sub2").value);
+            document.getElementById("res_subtracao").innerHTML = "Resposta: "+(v1-v2)+"<br>"+verifica(v1,v2);
+        }
+        function divisao() {
+            var v1 = parseFloat(document.getElementById("d1").value);
+            var v2 = parseFloat(document.getElementById("d2").value);
+            document.getElementById("res_divisao").innerHTML = "Resposta: "+(v1/v2)+"<br>"+verifica(v1,v2);
+        }
+        function multiplicacao() {
+            var v1 = parseFloat(document.getElementById("m1").value);
+            var v2 = parseFloat(document.getElementById("m2").value);
+            document.getElementById("res_multiplicacao").innerHTML = "Resposta: "+(v1*v2)+"<br>"+verifica(v1,v2);
+        }
+        function verifica(n1,n2) {
+            if (n1<n2) {
+                res = "Segundo número é o maior!";
+            }else if (n1>n2) {
+                res = "Primeiro número é o maior!";
+            }else {
+                res = "Números iguais!";
+            }
+            return res;
+        }
+    </script>
+    <style>
+        html{
+            width: 100%;
+            max-width: 1180px;
+            padding: 0 30px;
+            margin: 32px auto;
+        }
+        body{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+            list-style: none;
+        }
+        div{
+            border: 1px solid black;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="soma">
+        <h1>SOMA</h1>
+        <input type="number" id="s1" placeholder="Valor 1..."><br>
+        <input type="number" id="s2" placeholder="Valor 2..."><br>
+        <p id="res_soma">Resposta:</p><br>
+        <button type="button" onclick="soma()">Somar</button>
+    </div>
+    <div id="subtracao">
+        <h1>SUBTRAÇÃO</h1>
+        <input type="number" id="sub1" placeholder="Valor 1..."><br>
+        <input type="number" id="sub2" placeholder="Valor 2..."><br>
+        <p id="res_subtracao">Resposta:</p><br>
+        <button type="button" onclick="subtracao()">subtrair</button>
+    </div>
+    <div id="divisao">
+        <h1>DIVISÃO</h1>
+        <input type="number" id="d1" placeholder="Valor 1..."><br>
+        <input type="number" id="d2" placeholder="Valor 2..."><br>
+        <p id="res_divisao">Resposta:</p><br>
+        <button type="button" onclick="divisao()">dividir</button>
+    </div>
+    <div id="multiplicacao">
+        <h1>MULTIPLICAÇÃO</h1>
+        <input type="number" id="m1" placeholder="Valor 1..."><br>
+        <input type="number" id="m2" placeholder="Valor 2..."><br>
+        <p id="res_multiplicacao">Resposta:</p><br>
+        <button type="button" onclick="multiplicacao()">multiplicar</button>
+    </div>
+</body>
+</html>

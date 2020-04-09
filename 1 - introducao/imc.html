@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Índice de Massa Corpórea</title>
+        <script>
+            function imc() {
+                var peso = parseFloat(document.getElementById("peso").value);
+                var altura = parseFloat(document.getElementById("altura").value);
+                var imc = peso/(altura*altura);
+                if (imc<16) {
+                    var cat = "Baixo peso muito grave!";
+                }else if (imc>=16 && imc<=16.99) {
+                    var cat = "Baixo peso grave!";
+                }else if (imc>=17 && imc<=18.49) {
+                    var cat = "Baixo peso!";
+                }else if (imc>=18.5 && imc<=24.99) {
+                    var cat = "Peso normal!";
+                }else if (imc>=25 && imc<=29.99) {
+                    var cat = "Sobrepeso!";
+                }else if (imc>=30 && imc<=34.99) {
+                    var cat = "Obesidade grau I!";
+                }else if (imc>=35 && imc<=39.99) {
+                    var cat = "Obesidade grau II!";
+                }else if (imc>=40) {
+                    var cat = "Obesidade grau III (obesidade mórbida)!";
+                }else{
+                    var cat = "";
+                }
+                document.getElementById("res").innerHTML = "Resultado: "+imc.toFixed(2)+" kg/m­­²<br>"+cat;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>IMC</h1>
+        <div id="container">
+            Peso <input type="number" id="peso" placeholder="em kg"><br>
+            Altura <input type="number" id="altura" placeholder="em metros"><br>
+            <button type="button" onclick="imc()">Calcular</button>
+            <p id="res">Resultado:</p>
+        </div>
+    </body>
+</html>
