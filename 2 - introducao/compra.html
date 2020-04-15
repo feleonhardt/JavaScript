@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        function trocaUsername() {
+            var user = document.getElementById("user").value;
+            if (user !== "") {
+                document.getElementById("username").innerHTML = user;
+                document.getElementById("user").value = "";  
+            }
+        }
+        function calculaTotalItem(qnt) {
+            for (let i = 1; i <= qnt; i++) {
+                var valor = parseFloat(document.getElementById("unit"+i).innerHTML);
+                var numero = parseInt(document.getElementById("qnt"+i).value);
+                var total = valor*numero;
+                document.getElementById("total"+i).innerHTML = total;
+                
+            }
+        }
+        function verificaQnt(item) {
+            var numero = parseInt(document.getElementById("qnt"+item).value);
+            if (numero < 1) {
+                document.getElementById("qnt"+item).value = 1;
+            }
+            calculaTotalItem(2);
+        }
+        function aumentaQnt(item) {
+            document.getElementById("qnt"+item).value++;
+            calculaTotalItem(2);
+        }
+        function diminuiQnt(item) {
+            var qnt = parseInt(document.getElementById("qnt"+item).value);
+            if (qnt > 1) {
+                document.getElementById("qnt"+item).value--;
+            }
+            calculaTotalItem(2);
+        }
+        function apagaItem(item) {
+            document.getElementById("item"+item).innerHTML = "Item removido! <div></div><div></div><div></div><div></div> <div style='text-align: right;'><button type='button' style='width: 30px;' onclick='escondeAviso("+item+")'>x</button></div>";
+        }
+        function escondeAviso(item) {
+            document.getElementById("item"+item).style.display = "none";
+        }
+    </script>
+</head>
+<body onload="calculaTotalItem(2)">
+    <div class="container">
+        <div class="head">
+            <div class="input-group">
+                <input type="text" id="user" placeholder="Digite seu usuário...">
+                <button type="button" onclick="trocaUsername()">LOGAR</button>
+            </div>
+            <div>
+                <p id="username">Visitante</p>
+            </div>
+        </div>
+        <div class="lista">
+            <div class="item" id="item1">
+                <img src="assets/img/caneta.png" width="100%" alt="">
+                <div>
+                    <p>Produto</p>
+                    <p id="nome1">Caneta</p>
+                </div>
+                <div>
+                    <p>Valor unitário</p>
+                    <p id="unit1">1.00</p>
+                </div>
+                <div>
+                    <p>Quantidade</p>
+                    <div class="item-action">
+                        <button type="button" id="1-" onclick="diminuiQnt(1)">-</button>
+                        <input type="number" id="qnt1" value="1" min="1" onchange="verificaQnt(1)">
+                        <button type="button" id="1+" onclick="aumentaQnt(1)">+</button>
+                    </div>
+                </div>
+                <div>
+                    <p>Valor Total</p>
+                    <p id="total1"></p>
+                </div>
+                <div>
+                    <button type="button" onclick="apagaItem(1)">EXCLUIR</button>
+                </div>
+            </div>
+            <div class="item" id="item2">
+                <img src="assets/img/pendrive.png" width="100%" alt="">
+                <div>
+                    <p>Produto</p>
+                    <p id="nome2">Pen Drive</p>
+                </div>
+                <div>
+                    <p>Valor unitário</p>
+                    <p id="unit2">49.00</p>
+                </div>
+                <div>
+                    <p>Quantidade</p>
+                    <div class="item-action">
+                        <button type="button" id="2-" onclick="diminuiQnt(2)">-</button>
+                        <input type="number" id="qnt2" value="1" min="1" onchange="verificaQnt(2)">
+                        <button type="button" id="2+" onclick="aumentaQnt(2)">+</button>
+                    </div>
+                </div>
+                <div>
+                    <p>Valor Total</p>
+                    <p id="total2"></p>
+                </div>
+                <div>
+                    <button type="button" onclick="apagaItem(2)">EXCLUIR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

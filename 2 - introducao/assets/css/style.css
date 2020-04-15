@@ -1,0 +1,26 @@
+.container{
+    margin: auto 5%;
+}
+.head{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 0px;
+    align-items: center;
+}
+p#username {
+    text-align: right;
+}
+.item{
+    display: grid;
+    grid-template-columns: 15% 15% repeat(4, auto);
+    grid-gap: 00px;
+    margin-bottom: 20px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background-color: aquamarine;
+    align-items: center;
+}
+.item-action > input {
+    width: 15%;
+    min-width: 20px;
+}
