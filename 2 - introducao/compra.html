@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
     <script>
         function trocaUsername() {
             var user = document.getElementById("user").value;
@@ -15,10 +16,13 @@
         }
         function calculaTotalItem(qnt) {
             for (let i = 1; i <= qnt; i++) {
-                var valor = parseFloat(document.getElementById("unit"+i).innerHTML);
-                var numero = parseInt(document.getElementById("qnt"+i).value);
-                var total = valor*numero;
-                document.getElementById("total"+i).innerHTML = total;
+                if (document.getElementById("unit"+i) && document.getElementById("qnt"+i)) {
+                    var valor = parseFloat(document.getElementById("unit"+i).innerHTML);
+                    var numero = parseInt(document.getElementById("qnt"+i).value);
+                    var total = valor*numero;
+                    total = Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total);
+                    document.getElementById("total"+i).innerHTML = total;
+                }
                 
             }
         }
@@ -41,36 +45,45 @@
             calculaTotalItem(2);
         }
         function apagaItem(item) {
-            document.getElementById("item"+item).innerHTML = "Item removido! <div></div><div></div><div></div><div></div> <div style='text-align: right;'><button type='button' style='width: 30px;' onclick='escondeAviso("+item+")'>x</button></div>";
+            document.getElementById("item"+item).innerHTML = "<div class='aviso'>Item removido!</div> <div></div><div></div><div></div><div></div> <div style='text-align: right;'><button type='button' style='width: 30px;' onclick='escondeAviso("+item+")' class='fechar'>x</button></div>";
         }
         function escondeAviso(item) {
             document.getElementById("item"+item).style.display = "none";
         }
+        function finalizarPedido() {
+            alert("Obrigado pela preferência!");
+            document.getElementById("username").innerHTML = "Visitante";
+            window.location.replace("compra.html");
+        }
     </script>
 </head>
 <body onload="calculaTotalItem(2)">
-    <div class="container">
-        <div class="head">
-            <div class="input-group">
-                <input type="text" id="user" placeholder="Digite seu usuário...">
-                <button type="button" onclick="trocaUsername()">LOGAR</button>
-            </div>
-            <div>
-                <p id="username">Visitante</p>
-            </div>
+    <div class="head">
+        <div class="input-group">
+            <input type="text" id="user" placeholder="Digite seu usuário...">
+            <button type="button" onclick="trocaUsername()">LOGAR</button>
         </div>
+        <div>
+            <p id="username">Visitante</p>
+        </div>
+    </div>
+    <div class="container">
         <div class="lista">
             <div class="item" id="item1">
                 <img src="assets/img/caneta.png" width="100%" alt="">
+                <div></div>
                 <div>
                     <p>Produto</p>
                     <p id="nome1">Caneta</p>
                 </div>
-                <div>
+                <div class="center">
                     <p>Valor unitário</p>
-                    <p id="unit1">1.00</p>
+                    <div class="reais">
+                        <p class="espaco">R$</p>
+                        <p id="unit1">1.00</p>
+                    </div>
                 </div>
-                <div>
+                <div class="center">
                     <p>Quantidade</p>
                     <div class="item-action">
                         <button type="button" id="1-" onclick="diminuiQnt(1)">-</button>
@@ -78,25 +91,29 @@
                         <button type="button" id="1+" onclick="aumentaQnt(1)">+</button>
                     </div>
                 </div>
-                <div>
+                <div class="center">
                     <p>Valor Total</p>
                     <p id="total1"></p>
                 </div>
-                <div>
-                    <button type="button" onclick="apagaItem(1)">EXCLUIR</button>
+                <div class="center excluir">
+                    <button type="button" onclick="apagaItem(1)">X</button>
                 </div>
             </div>
             <div class="item" id="item2">
                 <img src="assets/img/pendrive.png" width="100%" alt="">
+                <div></div>
                 <div>
                     <p>Produto</p>
                     <p id="nome2">Pen Drive</p>
                 </div>
-                <div>
+                <div class="center">
                     <p>Valor unitário</p>
-                    <p id="unit2">49.00</p>
+                    <div class="reais">
+                        <p class="espaco">R$</p>
+                        <p id="unit2">49.00</p>
+                    </div>
                 </div>
-                <div>
+                <div class="center">
                     <p>Quantidade</p>
                     <div class="item-action">
                         <button type="button" id="2-" onclick="diminuiQnt(2)">-</button>
@@ -104,14 +121,17 @@
                         <button type="button" id="2+" onclick="aumentaQnt(2)">+</button>
                     </div>
                 </div>
-                <div>
+                <div class="center">
                     <p>Valor Total</p>
                     <p id="total2"></p>
                 </div>
-                <div>
-                    <button type="button" onclick="apagaItem(2)">EXCLUIR</button>
+                <div class="center excluir">
+                    <button type="button" onclick="apagaItem(2)">X</button>
                 </div>
             </div>
+        </div>
+        <div class="footer">
+            <button class="finalizar" type="button" onclick="finalizarPedido()">FINALIZAR PEDIDO</button>
         </div>
     </div>
 </body>

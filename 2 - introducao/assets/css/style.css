@@ -1,26 +1,168 @@
+@media screen and (max-width: 700px) {
+    .container{
+        margin: 0;
+    }
+}
+@media screen and (min-width: 701px) and (max-width: 1023px){
+    .container{
+        margin: auto 5%;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .container{
+        margin: auto 10%;
+    }
+}
 .container{
-    margin: auto 5%;
+    padding-top: 20px;
+}
+body{
+    font-size: large;
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: rgb(240, 240, 240);
 }
 .head{
     display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 0px;
+    grid-template-columns: 50% 40%;
+    grid-gap: 10px;
     align-items: center;
+    text-align: center;
+    padding: 15px 0;
+    background-color: orangered;
+    color: white;
+}
+input{
+    border: 1.5px solid white;
+    border-radius: 5px;
 }
 p#username {
     text-align: right;
+    font-size: 30px;
+    margin: 0;
 }
 .item{
     display: grid;
-    grid-template-columns: 15% 15% repeat(4, auto);
+    grid-template-columns: 15% 5% 35% 10% 20% 10% 5%;
     grid-gap: 00px;
     margin-bottom: 20px;
     padding: 10px 10px;
     border-radius: 10px;
-    background-color: aquamarine;
+    background-color: white;
     align-items: center;
+    border: 2px solid rgba(94, 93, 93, 0.3);
+    transition: 0.2s;
+}
+.item:hover{
+    border: 2px solid orangered;
 }
 .item-action > input {
-    width: 15%;
+    width: 25%;
     min-width: 20px;
+    font-size: 15px;
+    border: 1px solid black;
+    height: 25px;
+    text-align: center;
+}
+.item-action button{
+    font-size: 15px;
+    text-align: center;
+    align-content: center;
+    background-color: white;
+    border: 1px solid orangered;
+    border-radius: 10%;
+    color: orangered;
+    font-weight: 800;
+    transition: 0.2s;
+}
+.item-action > button:hover{
+    background-color: orangered;
+    color: white;
+}
+.center{
+    text-align: center;
+}
+.reais > p{
+    margin: 0;
+}
+.reais{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 2%;
+    text-align: left;
+}
+.reais > .espaco{
+    text-align: right;
+}
+.footer{
+    text-align: right;
+}
+.excluir button, .finalizar{
+    font-size: 2em;
+    text-align: center;
+    align-content: center;
+    background-color: white;
+    border: 1.5px solid orangered;
+    border-radius: 10%;
+    color: orangered;
+    font-weight: 800;
+    transition: 0.2s;
+}
+.excluir button:hover, .finalizar:hover{
+    background-color: orangered;
+    color: white;
+}
+.finalizar{
+    border-radius: 5px;
+}
+.input-group button{
+    font-size: 30px;
+    text-align: center;
+    align-content: center;
+    background-color: orangered;
+    border: 1.5px solid white;
+    border-radius: 5px;
+    color: white;
+    transition: 0.2s;
+}
+.input-group button:hover{
+    background-color: white;
+    color: orangered;
+}
+.input-group input{
+    font-size: 25px;
+    color: white;
+    background-color: rgba(255, 201, 181, 0.5) ;
+    
+}
+.input-group input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+ }
+ 
+.input-group input:-moz-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+ }
+ 
+.input-group input::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.5);  
+ }
+ 
+.input-group input:-ms-input-placeholder {  
+    color: rgba(255, 255, 255, 0.5);  
+ }
+.fechar{
+    text-align: center;
+    align-content: center;
+    background-color: white;
+    border: 1.5px solid orangered;
+    border-radius: 10%;
+    color: orangered;
+    transition: 0.2s;
+}
+.fechar:hover{
+    background-color: orangered;
+    color: white;
+}
+.aviso{
+    color: red;
 }
